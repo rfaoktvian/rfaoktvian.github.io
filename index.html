@@ -1,549 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nazly Rafa Oktafian Nuzqu | Portfolio</title>
-<meta name="description" content="Nazly Rafa Oktafian Nuzqu — Data Analyst, Data Engineer & Data Enthusiast. Portfolio of projects in analytics, data engineering, and machine learning.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#F7F7FB;
-    --card:#FFFFFF;
-    --border:#E5E4F2;
-    --text:#1E1B2E;
-    --muted:#5D5A72;
-    --primary:#4F46E5;
-    --primary-dark:#3730A3;
-    --accent:#7C3AED;
-    --accent-soft:#F1EEFE;
-    --primary-soft:#EEECFD;
-    --shadow:0 4px 18px rgba(30,27,46,0.06);
-    --shadow-hover:0 10px 28px rgba(30,27,46,0.10);
-    --radius:16px;
-    --maxw:1100px;
-  }
-  *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',system-ui,sans-serif;
-    line-height:1.65;
-    font-size:16px;
-  }
-  h1,h2,h3,h4{ font-family:'Poppins',system-ui,sans-serif; margin:0; }
-  a{ color:var(--primary); text-decoration:none; }
-  a:hover{ text-decoration:underline; }
-  a:focus-visible, button:focus-visible{ outline:2px solid var(--primary); outline-offset:2px; }
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
-  img{ max-width:100%; display:block; }
-
-  /* nav */
-  header.top{
-    position:sticky; top:0; z-index:30;
-    background:rgba(247,249,252,0.9);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--border);
-  }
-  .topbar{ max-width:var(--maxw); margin:0 auto; padding:16px 24px;
-    display:flex; align-items:center; justify-content:space-between; }
-  .logo{ font-family:'Poppins',sans-serif; font-weight:700; font-size:17px; color:var(--text); }
-  .logo span{ color:var(--primary); }
-  nav.links{ display:flex; gap:28px; }
-  nav.links a{ color:var(--muted); font-size:14.5px; font-weight:500; }
-  nav.links a:hover{ color:var(--text); text-decoration:none; }
-  .nav-cta{ background:var(--primary); color:#fff !important; padding:9px 18px; border-radius:999px; font-size:14px; font-weight:600; }
-  .nav-cta:hover{ background:var(--primary-dark); text-decoration:none; }
-  .nav-row{ display:flex; align-items:center; gap:28px; }
-
-  /* hero */
-  .hero{ padding:80px 0 60px; }
-  .hero-inner{ display:grid; grid-template-columns:1fr auto; gap:56px; align-items:center; }
-  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:var(--primary-soft); color:var(--primary-dark);
-    font-size:13px; font-weight:600; padding:7px 14px; border-radius:999px; margin-bottom:20px; }
-  .eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:#22C55E; }
-  h1.name{ font-size:42px; line-height:1.2; font-weight:700; margin-bottom:10px; }
-  .role-line{ font-size:18px; font-weight:600; color:var(--primary-dark); margin-bottom:16px; }
-  .role-line .sep{ color:var(--border); margin:0 8px; font-weight:400; }
-  .lede{ color:var(--muted); max-width:52ch; margin-bottom:28px; font-size:16px; }
-  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:28px; }
-  .btn{ display:inline-block; padding:12px 24px; border-radius:10px; font-weight:600; font-size:14.5px; }
-  .btn.primary{ background:var(--primary); color:#fff; }
-  .btn.primary:hover{ background:var(--primary-dark); text-decoration:none; }
-  .btn.ghost{ background:#fff; color:var(--text); border:1px solid var(--border); }
-  .btn.ghost:hover{ border-color:var(--primary); color:var(--primary); text-decoration:none; }
-  .meta-row{ display:flex; flex-direction:column; gap:8px; color:var(--muted); font-size:14px; }
-  .meta-row span{ display:inline-flex; align-items:center; gap:6px; }
-
-  .avatar{
-    position:relative; overflow:hidden;
-    width:190px; height:190px; border-radius:50%;
-    background:linear-gradient(135deg, var(--text), var(--primary));
-    display:flex; align-items:center; justify-content:center;
-    color:#fff; font-family:'Poppins',sans-serif; font-weight:700; font-size:56px;
-    box-shadow:var(--shadow-hover);
-    flex-shrink:0;
-  }
-  .avatar img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-
-  /* generic section */
-  section{ padding:56px 0; }
-  .sec-eyebrow{ color:var(--primary); font-weight:600; font-size:13.5px; letter-spacing:0.02em; margin-bottom:8px; display:block; }
-  h2.sec-title{ font-size:28px; font-weight:700; margin-bottom:14px; }
-  .sec-sub{ color:var(--muted); max-width:64ch; margin-bottom:36px; font-size:15px; }
-
-  .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); }
-
-  /* about */
-  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:28px; align-items:start; }
-  .about-card{ padding:32px; }
-  .about-card p{ color:var(--muted); margin:0 0 14px; }
-  .about-card p b{ color:var(--text); }
-  .fact-list{ list-style:none; margin:0; padding:32px; display:grid; gap:18px; }
-  .fact-list li{ display:flex; justify-content:space-between; gap:12px; font-size:14.5px; border-bottom:1px solid var(--border); padding-bottom:14px; }
-  .fact-list li:last-child{ border-bottom:none; padding-bottom:0; }
-  .fact-list .k{ color:var(--muted); }
-  .fact-list .v{ font-weight:600; text-align:right; }
-
-  /* skills */
-  .skill-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
-  .skill-card{ padding:24px; }
-  .skill-card h4{ font-size:15px; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
-  .skill-card h4 .ic{ width:8px; height:8px; border-radius:50%; background:var(--accent); }
-  .pill-row{ display:flex; flex-wrap:wrap; gap:8px; }
-  .pill{ background:var(--primary-soft); color:var(--primary-dark); font-size:13px; font-weight:500; padding:6px 13px; border-radius:999px; }
-
-  /* experience */
-  .tl{ position:relative; padding-left:28px; }
-  .tl::before{ content:''; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:var(--border); }
-  .tl-item{ position:relative; margin-bottom:22px; }
-  .tl-item:last-child{ margin-bottom:0; }
-  .tl-item::before{ content:''; position:absolute; left:-28px; top:22px; width:14px; height:14px; border-radius:50%; background:#fff; border:3px solid var(--primary); }
-  .tl-card{ padding:24px 26px; }
-  .tl-date{ display:inline-block; background:var(--accent-soft); color:var(--primary-dark); font-size:12.5px; font-weight:600; padding:4px 11px; border-radius:999px; margin-bottom:10px; }
-  .tl-role{ font-size:17px; font-weight:600; margin-bottom:2px; }
-  .tl-org{ color:var(--muted); font-size:14px; margin-bottom:12px; }
-  .tl-card ul{ margin:0; padding-left:18px; color:var(--muted); font-size:14.5px; }
-  .tl-card li{ margin-bottom:6px; }
-  .tl-card li:last-child{ margin-bottom:0; }
-
-  /* projects */
-  .proj-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
-  .proj-card{ padding:0; overflow:hidden; display:flex; flex-direction:column; height:100%; transition:box-shadow .3s ease, transform .3s ease; }
-  .proj-card:hover{ box-shadow:var(--shadow-hover); transform:translateY(-8px); }
-  .proj-card.featured{ grid-column:1 / -1; }
-  .proj-card.featured .proj-media{ height:220px; }
-
-  .proj-media{ position:relative; height:170px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-  .proj-media .ic{ font-size:44px; transition:transform .4s ease; z-index:1; }
-  .proj-card:hover .proj-media .ic{ transform:scale(1.12); }
-  .proj-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:2; transition:transform .4s ease; }
-  .proj-card:hover .proj-media img{ transform:scale(1.08); }
-  .proj-overlay{ position:absolute; inset:0; background:linear-gradient(to top, rgba(15,12,30,0.72), transparent 65%);
-    display:flex; align-items:flex-end; padding:14px; opacity:0; transition:opacity .3s ease; }
-  .proj-card:hover .proj-overlay{ opacity:1; }
-  .proj-overlay .tag-row{ margin:0; }
-  .proj-overlay .tag{ background:rgba(255,255,255,0.92); color:var(--text); border:none; font-weight:600; }
-
-  .g1{ background:linear-gradient(135deg,#4F46E5,#7C3AED); }
-  .g2{ background:linear-gradient(135deg,#6D28D9,#4C1D95); }
-  .g3{ background:linear-gradient(135deg,#4338CA,#312E81); }
-  .g4{ background:linear-gradient(135deg,#7C3AED,#5B21B6); }
-  .g5{ background:linear-gradient(135deg,#4F46E5,#312E81); }
-  .g6{ background:linear-gradient(135deg,#6D28D9,#4338CA); }
-
-  .proj-body{ padding:22px 24px; display:flex; flex-direction:column; flex:1; }
-  .proj-badge{ display:inline-block; font-size:11.5px; font-weight:700; color:var(--primary-dark); background:var(--primary-soft); padding:4px 10px; border-radius:6px; margin-bottom:10px; width:fit-content; letter-spacing:0.02em; }
-  .proj-card h3{ font-size:17.5px; margin-bottom:4px; }
-  .proj-org{ color:var(--muted); font-size:13px; margin-bottom:12px; }
-  .proj-desc{ color:var(--muted); font-size:14.5px; margin-bottom:16px; flex-grow:1; }
-  .tag-row{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom:16px; }
-  .tag{ font-size:12px; color:var(--muted); background:var(--bg); border:1px solid var(--border); padding:4px 10px; border-radius:6px; }
-  .proj-metric{ font-size:13.5px; font-weight:600; color:var(--primary-dark); margin-bottom:14px; }
-  .proj-link{ font-size:13.5px; font-weight:600; display:inline-flex; align-items:center; gap:5px; }
-
-  /* certifications */
-  .cert-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-  .cert-card{ padding:0; overflow:hidden; text-align:center; transition:box-shadow .3s ease, transform .3s ease; }
-  .cert-card:hover{ box-shadow:var(--shadow-hover); transform:translateY(-8px); }
-  .cert-media{ position:relative; height:120px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-  .cert-media .badge{ font-size:26px; font-weight:700; color:#fff; letter-spacing:0.02em; transition:transform .3s ease; }
-  .cert-card:hover .cert-media .badge{ transform:scale(1.12); }
-  .cert-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#fff; padding:10px; z-index:2; }
-  .cert-body{ padding:18px 16px; }
-  .cert-name{ font-weight:600; font-size:14.5px; margin-bottom:4px; }
-  .cert-src{ color:var(--muted); font-size:12.5px; }
-
-  /* leadership */
-  .lead-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-  .lead-card{ padding:24px; }
-  .lead-card .role{ font-weight:600; font-size:15px; margin-bottom:2px; }
-  .lead-card .org{ color:var(--primary-dark); font-size:12.5px; font-weight:500; margin-bottom:10px; }
-  .lead-card p{ color:var(--muted); font-size:13.5px; margin:0; }
-
-  /* contact */
-  .contact-card{ padding:48px; text-align:center; background:linear-gradient(135deg, var(--primary), #6D28D9); }
-  .contact-card h2{ color:#fff; font-size:26px; margin-bottom:10px; }
-  .contact-card p{ color:#DCE6FF; margin-bottom:26px; }
-  .contact-links{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
-  .contact-links a{ background:rgba(255,255,255,0.14); color:#fff; padding:11px 22px; border-radius:10px; font-weight:600; font-size:14.5px; border:1px solid rgba(255,255,255,0.3); }
-  .contact-links a:hover{ background:rgba(255,255,255,0.24); text-decoration:none; }
-
-  footer{ padding:30px 0 50px; text-align:center; color:var(--muted); font-size:13.5px; }
-
-  @media (max-width:860px){
-    .hero-inner{ grid-template-columns:1fr; text-align:center; }
-    .hero-inner .avatar{ margin:0 auto; }
-    .cta-row, .meta-row{ justify-content:center; }
-    .about-grid{ grid-template-columns:1fr; }
-    .skill-grid{ grid-template-columns:1fr; }
-    .proj-grid{ grid-template-columns:1fr; }
-    .cert-grid{ grid-template-columns:repeat(2,1fr); }
-    .lead-grid{ grid-template-columns:1fr; }
-    nav.links{ display:none; }
-    h1.name{ font-size:32px; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nazly Rafa Oktafian Nuzqu | Portfolio</title>
+  <meta name="description"
+    content="Nazly Rafa Oktafian Nuzqu — Data Analyst, Data Engineer & Data Enthusiast. Portfolio of projects in analytics, data engineering, and machine learning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<header class="top">
-  <div class="topbar">
-    <div class="logo">Nazly<span>.</span></div>
-    <div class="nav-row">
-      <nav class="links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#certifications">Certifications</a>
-      </nav>
-      <a class="nav-cta" href="#contact">Contact</a>
-    </div>
-  </div>
-</header>
-
-<main class="wrap">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div>
-        <span class="eyebrow"><span class="dot"></span> Open to work</span>
-        <h1 class="name">Nazly Rafa Oktafian Nuzqu</h1>
-        <p class="role-line">Data Analyst <span class="sep">/</span> Data Engineer <span class="sep">/</span> Data Enthusiast</p>
-        <p class="lede">Final-year Information Systems student who enjoys the full span of data work — from cleaning messy tables and building dashboards, to designing pipelines and experimenting with machine learning models.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="#projects">View Projects</a>
-          <a class="btn ghost" href="https://github.com/rfaoktvian" target="_blank" rel="noopener">GitHub Profile</a>
-        </div>
-        <div class="meta-row">
-          <span>📍 Purbalingga, Jawa Tengah, Indonesia</span><br>
-          <span>✉️ rafaoktavian2005@gmail.com</span>
-        </div>
-      </div>
-      <div class="avatar">
-        <img src="assets/images/profile.jpg" alt="Nazly Rafa Oktafian Nuzqu" onerror="this.remove()">
-        <span>NR</span>
+  <header class="top">
+    <div class="topbar">
+      <div class="logo">Nazly<span>.</span></div>
+      <div class="nav-row">
+        <nav class="links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#certifications">Certifications</a>
+        </nav>
+        <a class="nav-cta" href="#contact">Contact</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <span class="sec-eyebrow">Get to know me</span>
-    <h2 class="sec-title">About Me</h2>
-    <div class="about-grid">
-      <div class="card about-card">
-        <p>Hi, I'm <b>Nazly</b> 👋 — a final-year Information Systems student at <b>Telkom University Purwokerto</b>, passionate about turning raw data into decisions people can actually act on.</p>
-        <p>My experience spans <b>data analysis</b> (dashboards, KPI reporting, SQL) at PT Telkom Indonesia and SOKO Financial, <b>data engineering</b> (pipelines, warehousing, orchestration) through independent projects, and <b>machine learning</b> (NLP, computer vision, clustering) through bootcamps and competitions.</p>
-        <p>I don't box myself into a single title — I'm genuinely curious about the whole data stack, and I pick up whatever tool the problem needs.</p>
-      </div>
-      <ul class="card fact-list">
-        <li><span class="k">Education</span><span class="v">B.Sc. Information Systems</span></li>
-        <li><span class="k">University</span><span class="v">Telkom University Purwokerto</span></li>
-        <li><span class="k">GPA</span><span class="v">3.93 / 4.00</span></li>
-        <li><span class="k">Internships</span><span class="v">3 completed</span></li>
-        <li><span class="k">Focus</span><span class="v">Analytics · Engineering · ML</span></li>
-      </ul>
-    </div>
-  </section>
+  <main class="wrap">
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <span class="sec-eyebrow">What I work with</span>
-    <h2 class="sec-title">Skills</h2>
-    <div class="skill-grid">
-      <div class="card skill-card">
-        <h4><span class="ic"></span>Data Analysis & Visualization</h4>
-        <div class="pill-row">
-          <span class="pill">Looker Studio</span><span class="pill">Google BigQuery</span><span class="pill">Power BI</span><span class="pill">Excel</span>
-        </div>
-      </div>
-      <div class="card skill-card">
-        <h4><span class="ic"></span>Programming</h4>
-        <div class="pill-row">
-          <span class="pill">Python</span><span class="pill">Pandas / NumPy</span><span class="pill">Scikit-learn</span><span class="pill">Keras</span><span class="pill">SQL</span>
-        </div>
-      </div>
-      <div class="card skill-card">
-        <h4><span class="ic"></span>Machine Learning</h4>
-        <div class="pill-row">
-          <span class="pill">NLP</span><span class="pill">Computer Vision</span><span class="pill">Forecasting</span><span class="pill">Clustering</span><span class="pill">Classification</span>
-        </div>
-      </div>
-      <div class="card skill-card">
-        <h4><span class="ic"></span>Database & Engineering</h4>
-        <div class="pill-row">
-          <span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">Data Modelling</span><span class="pill">ETL/ELT</span><span class="pill">ERD Design</span><span class="pill">Data Normalization</span><span class="pill">BigQuery</span><span class="pill">Airflow</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <span class="sec-eyebrow">Where I've worked</span>
-    <h2 class="sec-title">Experience</h2>
-    <div class="tl">
-      <div class="tl-item">
-        <div class="card tl-card">
-          <span class="tl-date">Dec 2025 — May 2026</span>
-          <p class="tl-role">Data Analyst Intern</p>
-          <p class="tl-org">SOKO Financial</p>
-          <ul>
-            <li>End-to-end data analysis supporting financial and business performance monitoring</li>
-            <li>Built interactive Looker Studio dashboards for KPI tracking and executive reporting</li>
-            <li>Maintained a KPI mastersheet and designed pipeline workflows for data integration and reporting automation</li>
-            <li>Design data pipeline workflows for integration validation and reporting automation.</li>
-            <li>Generate periodic financial reports for strategic and operational decisions.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="card tl-card">
-          <span class="tl-date">Jul — Sep 2025</span>
-          <p class="tl-role">Data Analyst Intern</p>
-          <p class="tl-org">PT Telekomunikasi Indonesia</p>
-          <ul>
-            <li>Built analytic dashboards in Looker Studio and BigQuery to track network monitoring product performance</li>
-            <li>Analyzed network data with SQL to generate actionable business insights</li>
-            <li>Presented findings directly to product owners and stakeholders</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="card tl-card">
-          <span class="tl-date">Jun — Jul 2024</span>
-          <p class="tl-role">Data Scientist Intern</p>
-          <p class="tl-org">ID/X Partners × Rakamin Academy</p>
-          <ul>
-            <li>Applied K-Means clustering to segment customers by purchasing behavior and payment method</li>
-            <li>Developed a credit risk prediction model with feature selection and validation</li>
-            <li>Collaborated with industry mentors to deliver data-driven business recommendations.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="card tl-card">
-          <span class="tl-date">Mar — Jun 2025</span>
-          <p class="tl-role">Laboratory Assistant</p>
-          <p class="tl-org">Telkom University Purwokerto</p>
-          <ul>
-            <li>Mentored 80 students in Python, Data Structures & Algorithms — 40% average improvement in coding ability</li>
-            <li>Guided 76 students in database systems: ERD design, normalization, and complex SQL</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <span class="sec-eyebrow">Things I've built</span>
-    <h2 class="sec-title">Projects</h2>
-    <p class="sec-sub">A mix of internship work and independent projects across analytics, data engineering, and machine learning. Full code and documentation on GitHub.</p>
-    <div class="proj-grid">
-
-      <div class="card proj-card featured">
-        <div class="proj-media g1">
-          <img src="assets/images/projects/retail-warehouse.jpg" alt="Retail E-commerce Data Warehouse" onerror="this.remove()">
-          <span class="ic">🏗️</span>
-          <div class="proj-overlay">
-            <div class="tag-row"><span class="tag">PostgreSQL</span><span class="tag">GCS</span><span class="tag">BigQuery</span><span class="tag">dbt</span><span class="tag">Airflow</span><span class="tag">Looker Studio</span></div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Open to work</span>
+          <h1 class="name">Nazly Rafa Oktafian Nuzqu</h1>
+          <p class="role-line">Data Analyst <span class="sep">/</span> Data Engineer <span class="sep">/</span> Data
+            Enthusiast</p>
+          <p class="lede">Final-year Information Systems student who enjoys the full span of data work — from cleaning
+            messy tables and building dashboards, to designing pipelines and experimenting with machine learning models.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn ghost" href="https://github.com/rfaoktvian" target="_blank" rel="noopener">GitHub Profile</a>
+          </div>
+          <div class="meta-row">
+            <span>📍 Purbalingga, Jawa Tengah, Indonesia</span>
+            <span>✉️ rafaoktavian2005@gmail.com</span>
           </div>
         </div>
-        <div class="proj-body">
-          <span class="proj-badge">FEATURED · DATA ENGINEERING</span>
-          <h3>Retail E-commerce Data Warehouse</h3>
-          <p class="proj-org">Independent portfolio project · Olist dataset</p>
-          <p class="proj-desc">End-to-end pipeline built on a medallion architecture: raw retail transaction data ingested from PostgreSQL, staged in GCS, modeled in BigQuery with dbt, and orchestrated with Airflow into Looker Studio–ready marts.</p>
-          <a class="proj-link" href="https://github.com/rfaoktvian/retail-ecommerce-data-warehouse" target="_blank" rel="noopener">View on GitHub →</a>
+        <div class="avatar">
+          <img src="assets/images/profile.jpg" alt="Nazly Rafa Oktafian Nuzqu" onerror="this.remove()">
+          <span>NR</span>
         </div>
       </div>
+    </section>
 
-      <div class="card proj-card">
-        <div class="proj-media g2">
-          <img src="assets/images/projects/credit-risk.jpg" alt="Credit Risk Prediction" onerror="this.remove()">
-          <span class="ic">🧮</span>
-          <div class="proj-overlay">
-            <div class="tag-row"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">MLflow</span></div>
+    <!-- ABOUT -->
+    <section id="about">
+      <span class="sec-eyebrow">Get to know me</span>
+      <h2 class="sec-title">About Me</h2>
+      <div class="about-grid">
+        <div class="card about-card">
+          <p>Hi, I'm <b>Nazly</b> 👋 — a final-year Information Systems student at <b>Telkom University Purwokerto</b>,
+            passionate about turning raw data into decisions people can actually act on.</p>
+          <p>My experience spans <b>data analysis</b> (dashboards, KPI reporting, SQL) at PT Telkom Indonesia and SOKO
+            Financial, <b>data engineering</b> (pipelines, warehousing, orchestration) through independent projects, and
+            <b>machine learning</b> (NLP, computer vision, clustering) through bootcamps and competitions.
+          </p>
+          <p>I don't box myself into a single title — I'm genuinely curious about the whole data stack, and I pick up
+            whatever tool the problem needs.</p>
+        </div>
+        <ul class="card fact-list">
+          <li><span class="k">Education</span><span class="v">B.Sc. Information Systems</span></li>
+          <li><span class="k">University</span><span class="v">Telkom University Purwokerto</span></li>
+          <li><span class="k">GPA</span><span class="v">3.93 / 4.00</span></li>
+          <li><span class="k">Internships</span><span class="v">3 completed</span></li>
+          <li><span class="k">Focus</span><span class="v">Analytics · Engineering · ML</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <span class="sec-eyebrow">What I work with</span>
+      <h2 class="sec-title">Skills</h2>
+      <div class="skill-grid">
+        <div class="card skill-card">
+          <h4><span class="ic"></span>Data Analysis & Visualization</h4>
+          <div class="pill-row">
+            <span class="pill">Looker Studio</span><span class="pill">Google BigQuery</span><span class="pill">Power
+              BI</span><span class="pill">Excel</span>
           </div>
         </div>
-        <div class="proj-body">
-          <span class="proj-badge">MACHINE LEARNING</span>
-          <h3>Credit Risk Prediction</h3>
-          <p class="proj-org">Independent portfolio project · LendingClub dataset</p>
-          <p class="proj-desc">Logistic regression credit risk model with data leakage removed and class-weight balancing, tracked with MLflow.</p>
-          <p class="proj-metric">ROC-AUC ≈ 0.68</p>
-          <a class="proj-link" href="https://github.com/rfaoktvian/CreditRiskPrediction" target="_blank" rel="noopener">View on GitHub →</a>
-        </div>
-      </div>
-
-      <div class="card proj-card">
-        <div class="proj-media g3">
-          <img src="assets/images/projects/sentiment-analysis.jpg" alt="Public Opinion Sentiment Analysis" onerror="this.remove()">
-          <span class="ic">🗣️</span>
-          <div class="proj-overlay">
-            <div class="tag-row"><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Bi-LSTM</span></div>
+        <div class="card skill-card">
+          <h4><span class="ic"></span>Programming</h4>
+          <div class="pill-row">
+            <span class="pill">Python</span><span class="pill">Pandas / NumPy</span><span
+              class="pill">Scikit-learn</span><span class="pill">Keras</span><span class="pill">SQL</span>
           </div>
         </div>
-        <div class="proj-body">
-          <span class="proj-badge">NLP</span>
-          <h3>Public Opinion Sentiment Analysis</h3>
-          <p class="proj-org">AI Engineer Cohort · 2024 Presidential Debate</p>
-          <p class="proj-desc">Bidirectional LSTM model analyzing public sentiment from social media, with preprocessing tuned for Indonesian-language text.</p>
-          <p class="proj-metric">87% accuracy</p>
-        </div>
-      </div>
-
-      <div class="card proj-card">
-        <div class="proj-media g4">
-          <img src="assets/images/projects/telkom-dashboard.jpg" alt="Customer Behaviour Overview Dashboard" onerror="this.remove()">
-          <span class="ic">📊</span>
-          <div class="proj-overlay">
-            <div class="tag-row"><span class="tag">BigQuery</span><span class="tag">Looker Studio</span><span class="tag">SQL</span></div>
+        <div class="card skill-card">
+          <h4><span class="ic"></span>Machine Learning</h4>
+          <div class="pill-row">
+            <span class="pill">NLP</span><span class="pill">Computer Vision</span><span
+              class="pill">Forecasting</span><span class="pill">Clustering</span><span
+              class="pill">Classification</span>
           </div>
         </div>
-        <div class="proj-body">
-          <span class="proj-badge">DASHBOARD</span>
-          <h3>Customer Behaviour Overview Dashboard</h3>
-          <p class="proj-org">PT Telkom Indonesia</p>
-          <p class="proj-desc">Analytics dashboard tracking network product usage across segments, built on complex BigQuery SQL for behavioral aggregation.</p>
-        </div>
-      </div>
-
-      <div class="card proj-card">
-        <div class="proj-media g5">
-          <img src="assets/images/projects/sipasar.jpg" alt="SIPASAR Customer Segmentation" onerror="this.remove()">
-          <span class="ic">🧩</span>
-          <div class="proj-overlay">
-            <div class="tag-row"><span class="tag">Python</span><span class="tag">K-Means</span><span class="tag">RFM</span><span class="tag">Streamlit</span></div>
+        <div class="card skill-card">
+          <h4><span class="ic"></span>Database & Engineering</h4>
+          <div class="pill-row">
+            <span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">Data
+              Modelling</span><span class="pill">ETL/ELT</span><span class="pill">ERD Design</span><span
+              class="pill">Data Normalization</span><span class="pill">BigQuery</span><span
+              class="pill">Airflow</span><span class="pill">Docker</span>
           </div>
         </div>
-        <div class="proj-body">
-          <span class="proj-badge">SEGMENTATION</span>
-          <h3>SIPASAR — Customer Segmentation</h3>
-          <p class="proj-org">Dicoding × Pijak × IBM SkillsBuild capstone</p>
-          <p class="proj-desc">AI-powered segmentation dashboard using K-Means and RFM analysis on retail transaction data, deployed via Streamlit.</p>
-        </div>
       </div>
+    </section>
 
-      <div class="card proj-card">
-        <div class="proj-media g6">
-          <img src="assets/images/projects/ritascreen.jpg" alt="RitaScreen AI CV Screening" onerror="this.remove()">
-          <span class="ic">🤖</span>
-          <div class="proj-overlay">
-            <div class="tag-row"><span class="tag">SBERT</span><span class="tag">XGBoost</span><span class="tag">FastAPI</span></div>
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <span class="sec-eyebrow">Where I've worked</span>
+      <h2 class="sec-title">Experience</h2>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="card tl-card">
+            <span class="tl-date">Dec 2025 — May 2026</span>
+            <p class="tl-role">Data Analyst Intern</p>
+            <p class="tl-org">SOKO Financial</p>
+            <ul>
+              <li>End-to-end data analysis supporting financial and business performance monitoring</li>
+              <li>Built interactive Looker Studio dashboards for KPI tracking and executive reporting</li>
+              <li>Maintained a KPI mastersheet and designed pipeline workflows for data integration and reporting
+                automation</li>
+              <li>Design data pipeline workflows for integration validation and reporting automation.</li>
+            </ul>
           </div>
         </div>
-        <div class="proj-body">
-          <span class="proj-badge">APPLIED ML</span>
-          <h3>RitaScreen — AI CV Screening</h3>
-          <p class="proj-org">Independent project</p>
-          <p class="proj-desc">CV screening system combining SBERT embeddings with an XGBoost scoring model, served through a FastAPI backend.</p>
+        <div class="tl-item">
+          <div class="card tl-card">
+            <span class="tl-date">Jul — Sep 2025</span>
+            <p class="tl-role">Data Analyst Intern</p>
+            <p class="tl-org">PT Telekomunikasi Indonesia</p>
+            <ul>
+              <li>Built analytic dashboards in Looker Studio and BigQuery to track network monitoring product
+                performance</li>
+              <li>Analyzed network data with SQL to generate actionable business insights</li>
+              <li>Presented findings directly to product owners and stakeholders</li>
+              <li>Collaborated with product teams to translate business requirements into data solutions.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="card tl-card">
+            <span class="tl-date">Jun — Jul 2024</span>
+            <p class="tl-role">Data Scientist Intern</p>
+            <p class="tl-org">ID/X Partners × Rakamin Academy</p>
+            <ul>
+              <li>Applied K-Means clustering to segment customers by purchasing behavior and payment method</li>
+              <li>Developed a credit risk prediction model with feature selection and validation</li>
+              <li>Collaborated with industry mentors to deliver data-driven business recommendations.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="card tl-card">
+            <span class="tl-date">Mar — Jun 2025</span>
+            <p class="tl-role">Laboratory Assistant</p>
+            <p class="tl-org">Telkom University Purwokerto</p>
+            <ul>
+              <li>Mentored 80 students in Python, Data Structures & Algorithms — 40% average improvement in coding
+                ability</li>
+              <li>Guided 76 students in database systems: ERD design, normalization, and complex SQL</li>
+            </ul>
+          </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <span class="sec-eyebrow">Things I've built</span>
+      <h2 class="sec-title">Projects</h2>
+      <p class="sec-sub">A mix of internship work and independent projects across analytics, data engineering, and
+        machine learning. Full code and documentation on GitHub.</p>
+      <div class="proj-grid">
 
-  <!-- CERTIFICATIONS -->
-  <section id="certifications">
-    <span class="sec-eyebrow">Always learning</span>
-    <h2 class="sec-title">Certifications</h2>
-    <div class="cert-grid">
-      <div class="card cert-card">
-        <div class="cert-media g1"><img src="assets/images/certificates/ai-engineer-cohort.png" alt="AI Engineer Cohort" onerror="this.remove()"><span class="badge">AI</span></div>
-        <div class="cert-body"><p class="cert-name">AI Engineer Cohort</p><p class="cert-src">Dicoding × Pijak 2026 & IBM SkillsBuild</p></div>
-      </div>
-      <div class="card cert-card">
-        <div class="cert-media g2"><img src="assets/images/certificates/data-scientist-idx.png" alt="Data Scientist Project Based Internship" onerror="this.remove()"><span class="badge">DS</span></div>
-        <div class="cert-body"><p class="cert-name">Data Scientist Project Based Internship</p><p class="cert-src">ID/X Partners</p></div>
-      </div>
-      <div class="card cert-card">
-        <div class="cert-media g3"><img src="assets/images/certificates/data-analyst-bootcamp.png" alt="Data Analyst Bootcamp" onerror="this.remove()"><span class="badge">DA</span></div>
-        <div class="cert-body"><p class="cert-name">Data Analyst Bootcamp — Basics to Advanced</p><p class="cert-src">Udemy</p></div>
-      </div>
-      <div class="card cert-card">
-        <div class="cert-media g4"><img src="assets/images/certificates/fundamental-algorithms.png" alt="Fundamental Algorithms" onerror="this.remove()"><span class="badge">AL</span></div>
-        <div class="cert-body"><p class="cert-name">Fundamental Algorithms</p><p class="cert-src">Coding Studio</p></div>
-      </div>
-      <div class="card cert-card">
-        <div class="cert-media g5"><img src="assets/images/certificates/fundamental-database.png" alt="Fundamental Database MySQL" onerror="this.remove()"><span class="badge">DB</span></div>
-        <div class="cert-body"><p class="cert-name">Fundamental Database MySQL</p><p class="cert-src">Coding Studio</p></div>
-      </div>
-      <div class="card cert-card">
-        <div class="cert-media g6"><img src="assets/images/certificates/computer-network.png" alt="Computer & Network Engineering" onerror="this.remove()"><span class="badge">CN</span></div>
-        <div class="cert-body"><p class="cert-name">Computer & Network Engineering</p><p class="cert-src">BNSP</p></div>
-      </div>
-    </div>
-  </section>
+        <div class="card proj-card featured">
+          <div class="proj-media g1">
+            <img src="assets/images/projects/retail-warehouse.jpg" alt="Retail E-commerce Data Warehouse"
+              onerror="this.remove()">
+            <span class="ic">🏗️</span>
+            <div class="proj-overlay">
+              <div class="tag-row"><span class="tag">PostgreSQL</span><span class="tag">GCS</span><span
+                  class="tag">BigQuery</span><span class="tag">dbt</span><span class="tag">Airflow</span><span
+                  class="tag">Looker Studio</span></div>
+            </div>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge">FEATURED · DATA ENGINEERING</span>
+            <h3>Retail E-commerce Data Warehouse</h3>
+            <p class="proj-org">Independent portfolio project · Olist dataset</p>
+            <p class="proj-desc">End-to-end pipeline built on a medallion architecture: raw retail transaction data
+              ingested from PostgreSQL, staged in GCS, modeled in BigQuery with dbt, and orchestrated with Airflow into
+              Looker Studio–ready marts.</p>
+            <a class="proj-link" href="https://github.com/rfaoktvian/retail-ecommerce-data-warehouse" target="_blank"
+              rel="noopener">View on GitHub →</a>
+          </div>
+        </div>
 
-  <!-- LEADERSHIP -->
-  <section id="leadership">
-    <span class="sec-eyebrow">Beyond the data</span>
-    <h2 class="sec-title">Leadership & Activities</h2>
-    <div class="lead-grid">
-      <div class="card lead-card">
-        <p class="role">Head of Public Relations</p>
-        <p class="org">Society of Renewable Energy · 2024–2026</p>
-        <p>Led an industrial visit collaboration with PT Pertamina Internasional and built 80+ media partnerships across campus SRE branches.</p>
-      </div>
-      <div class="card lead-card">
-        <p class="role">Ministry of Home Affairs Staff</p>
-        <p class="org">BEM KEMA Telkom University · 2024–2025</p>
-        <p>Led a 7-person logistics team for a 300-participant competition and coordinated community service for 50+ elderly residents.</p>
-      </div>
-      <div class="card lead-card">
-        <p class="role">Social Media Specialist & Talent</p>
-        <p class="org">Marketing Crew, Telkom University · 2024–Present</p>
-        <p>Develops content strategy and scripts for university branding, and serves as on-camera talent for campaign videos.</p>
-      </div>
-    </div>
-  </section>
+        <div class="card proj-card">
+          <div class="proj-media g2">
+            <img src="assets/images/projects/credit-risk.jpg" alt="Credit Risk Prediction" onerror="this.remove()">
+            <span class="ic">🧮</span>
+            <div class="proj-overlay">
+              <div class="tag-row"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span
+                  class="tag">MLflow</span></div>
+            </div>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge">MACHINE LEARNING</span>
+            <h3>Credit Risk Prediction</h3>
+            <p class="proj-org">Independent portfolio project · LendingClub dataset</p>
+            <p class="proj-desc">Logistic regression credit risk model with data leakage removed and class-weight
+              balancing, tracked with MLflow.</p>
+            <p class="proj-metric">ROC-AUC ≈ 0.68</p>
+            <a class="proj-link" href="https://github.com/rfaoktvian/CreditRiskPrediction" target="_blank"
+              rel="noopener">View on GitHub →</a>
+          </div>
+        </div>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="card contact-card">
-      <h2>Let's connect</h2>
-      <p>Open to Data Analyst and Data Engineer roles — happy to walk through any project above in more depth.</p>
-      <div class="contact-links">
-        <a href="mailto:rafaoktavian2005@gmail.com">✉️ Email Me</a>
-        <a href="https://github.com/rfaoktvian" target="_blank" rel="noopener">GitHub</a>
+        <div class="card proj-card">
+          <div class="proj-media g3">
+            <img src="assets/images/projects/sentiment-analysis.jpg" alt="Public Opinion Sentiment Analysis"
+              onerror="this.remove()">
+            <span class="ic">🗣️</span>
+            <div class="proj-overlay">
+              <div class="tag-row"><span class="tag">TensorFlow</span><span class="tag">Keras</span><span
+                  class="tag">Bi-LSTM</span></div>
+            </div>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge">NLP</span>
+            <h3>Public Opinion Sentiment Analysis</h3>
+            <p class="proj-org">AI Engineer Cohort · 2024 Presidential Debate</p>
+            <p class="proj-desc">Bidirectional LSTM model analyzing public sentiment from social media, with
+              preprocessing tuned for Indonesian-language text.</p>
+            <p class="proj-metric">87% accuracy</p>
+          </div>
+        </div>
+
+        <div class="card proj-card">
+          <div class="proj-media g4">
+            <img src="assets/images/projects/telkom-dashboard.jpg" alt="Customer Behaviour Overview Dashboard"
+              onerror="this.remove()">
+            <span class="ic">📊</span>
+            <div class="proj-overlay">
+              <div class="tag-row"><span class="tag">BigQuery</span><span class="tag">Looker Studio</span><span
+                  class="tag">SQL</span></div>
+            </div>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge">DASHBOARD</span>
+            <h3>Customer Behaviour Overview Dashboard</h3>
+            <p class="proj-org">PT Telkom Indonesia</p>
+            <p class="proj-desc">Analytics dashboard tracking network product usage across segments, built on complex
+              BigQuery SQL for behavioral aggregation.</p>
+          </div>
+        </div>
+
+        <div class="card proj-card">
+          <div class="proj-media g5">
+            <img src="assets/images/projects/sipasar.jpg" alt="SIPASAR Customer Segmentation" onerror="this.remove()">
+            <span class="ic">🧩</span>
+            <div class="proj-overlay">
+              <div class="tag-row"><span class="tag">Python</span><span class="tag">K-Means</span><span
+                  class="tag">RFM</span><span class="tag">Streamlit</span></div>
+            </div>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge">SEGMENTATION</span>
+            <h3>SIPASAR — Customer Segmentation</h3>
+            <p class="proj-org">Dicoding × Pijak × IBM SkillsBuild capstone</p>
+            <p class="proj-desc">AI-powered segmentation dashboard using K-Means and RFM analysis on retail transaction
+              data, deployed via Streamlit.</p>
+          </div>
+        </div>
+
+        <div class="card proj-card">
+          <div class="proj-media g6">
+            <img src="assets/images/projects/ritascreen.jpg" alt="RitaScreen AI CV Screening" onerror="this.remove()">
+            <span class="ic">🤖</span>
+            <div class="proj-overlay">
+              <div class="tag-row"><span class="tag">SBERT</span><span class="tag">XGBoost</span><span
+                  class="tag">FastAPI</span></div>
+            </div>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge">APPLIED ML</span>
+            <h3>RitaScreen — AI CV Screening</h3>
+            <p class="proj-org">Independent project</p>
+            <p class="proj-desc">CV screening system combining SBERT embeddings with an XGBoost scoring model, served
+              through a FastAPI backend.</p>
+          </div>
+        </div>
+
       </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <span class="sec-eyebrow">Always learning</span>
+      <h2 class="sec-title">Certifications</h2>
+      <div class="cert-grid">
+        <div class="card cert-card">
+          <div class="cert-media g1"><img src="assets/images/certificates/ai-engineer-cohort.png"
+              alt="AI Engineer Cohort" onerror="this.remove()"><span class="badge">AI</span></div>
+          <div class="cert-body">
+            <p class="cert-name">AI Engineer Cohort</p>
+            <p class="cert-src">Dicoding × Pijak 2026 & IBM SkillsBuild</p>
+          </div>
+        </div>
+        <div class="card cert-card">
+          <div class="cert-media g2"><img src="assets/images/certificates/data-scientist-idx.png"
+              alt="Data Scientist Project Based Internship" onerror="this.remove()"><span class="badge">DS</span></div>
+          <div class="cert-body">
+            <p class="cert-name">Data Scientist Project Based Internship</p>
+            <p class="cert-src">ID/X Partners</p>
+          </div>
+        </div>
+        <div class="card cert-card">
+          <div class="cert-media g3"><img src="assets/images/certificates/data-analyst-bootcamp.png"
+              alt="Data Analyst Bootcamp" onerror="this.remove()"><span class="badge">DA</span></div>
+          <div class="cert-body">
+            <p class="cert-name">Data Analyst Bootcamp — Basics to Advanced</p>
+            <p class="cert-src">Udemy</p>
+          </div>
+        </div>
+        <div class="card cert-card">
+          <div class="cert-media g4"><img src="assets/images/certificates/fundamental-algorithms.png"
+              alt="Fundamental Algorithms" onerror="this.remove()"><span class="badge">AL</span></div>
+          <div class="cert-body">
+            <p class="cert-name">Fundamental Algorithms</p>
+            <p class="cert-src">Coding Studio</p>
+          </div>
+        </div>
+        <div class="card cert-card">
+          <div class="cert-media g5"><img src="assets/images/certificates/fundamental-database.png"
+              alt="Fundamental Database MySQL" onerror="this.remove()"><span class="badge">DB</span></div>
+          <div class="cert-body">
+            <p class="cert-name">Fundamental Database MySQL</p>
+            <p class="cert-src">Coding Studio</p>
+          </div>
+        </div>
+        <div class="card cert-card">
+          <div class="cert-media g6"><img src="assets/images/certificates/computer-network.png"
+              alt="Computer & Network Engineering" onerror="this.remove()"><span class="badge">CN</span></div>
+          <div class="cert-body">
+            <p class="cert-name">Computer & Network Engineering</p>
+            <p class="cert-src">BNSP</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  © 2026 Nazly Rafa Oktafian Nuzqu — Built for GitHub Pages
-</footer>
+    <!-- LEADERSHIP -->
+    <section id="leadership">
+      <span class="sec-eyebrow">Beyond the data</span>
+      <h2 class="sec-title">Leadership & Activities</h2>
+      <div class="lead-grid">
+        <div class="card lead-card">
+          <p class="role">Head of Public Relations</p>
+          <p class="org">Society of Renewable Energy · 2024–2026</p>
+          <p>Led an industrial visit collaboration with PT Pertamina Internasional and built 80+ media partnerships
+            across campus SRE branches.</p>
+        </div>
+        <div class="card lead-card">
+          <p class="role">Ministry of Home Affairs Staff</p>
+          <p class="org">BEM KEMA Telkom University · 2024–2025</p>
+          <p>Led a 7-person logistics team for a 300-participant competition and coordinated community service for 50+
+            elderly residents.</p>
+        </div>
+        <div class="card lead-card">
+          <p class="role">Social Media Specialist & Talent</p>
+          <p class="org">Marketing Crew, Telkom University · 2024–Present</p>
+          <p>Develops content strategy and scripts for university branding, and serves as on-camera talent for campaign
+            videos.</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="card contact-card">
+        <h2>Let's connect</h2>
+        <p>Open to Data Analyst and Data Engineer roles — happy to walk through any project above in more depth.</p>
+        <div class="contact-links">
+          <a href="mailto:rafaoktavian2005@gmail.com">✉️ Email Me</a>
+          <a href="https://github.com/rfaoktvian" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Nazly Rafa Oktafian Nuzqu — Built for GitHub Pages
+  </footer>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
