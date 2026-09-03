@@ -87,6 +87,12 @@
     box-shadow:var(--shadow-hover);
     flex-shrink:0;
   }
+  .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Agar foto tidak terdistorsi/gepeng */
+  border-radius: 50%; /* Membuat foto berbentuk lingkaran sempurna */
+}
 
   /* generic section */
   section{ padding:56px 0; }
@@ -219,7 +225,9 @@
           <span>✉️ rafaoktavian2005@gmail.com</span>
         </div>
       </div>
-      <div class="avatar">NR</div>
+      <div class="avatar">
+        <img src="foto-rafa.jpg" alt="Nazly Rafa Oktafian Nuzqu">
+      </div>
     </div>
   </section>
 
