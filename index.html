@@ -79,19 +79,32 @@
   .meta-row{ display:flex; flex-direction:column; gap:8px; color:var(--muted); font-size:14px; }
   .meta-row span{ display:inline-flex; align-items:center; gap:6px; }
 
-  .avatar{
-    width:190px; height:190px; border-radius:50%;
-    background:linear-gradient(135deg, var(--text), var(--primary));
-    display:flex; align-items:center; justify-content:center;
-    color:#fff; font-family:'Poppins',sans-serif; font-weight:700; font-size:56px;
-    box-shadow:var(--shadow-hover);
-    flex-shrink:0;
-  }
-  .avatar img {
+.avatar {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  /* MENGUBAH GRADASI MENJADI LEBIH LEMBUT DENGAN WARNA AKSEN */
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(124, 58, 237, 0.2)), #000; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 56px;
+  box-shadow: var(--shadow-hover);
+  flex-shrink: 0;
+  overflow: hidden; /* Pastikan foto tetap di dalam lingkaran */
+  border: 4px solid #fff; /* Tambahkan border putih tipis agar kontras */
+}
+
+.avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Agar foto tidak terdistorsi/gepeng */
-  border-radius: 50%; /* Membuat foto berbentuk lingkaran sempurna */
+  object-fit: cover;
+  border-radius: 50%;
+  /* MENAMBAHKAN EFEK GRADASI DI ATAS FOTO */
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.8));
 }
 
   /* generic section */
