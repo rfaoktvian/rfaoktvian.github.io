@@ -79,33 +79,16 @@
   .meta-row{ display:flex; flex-direction:column; gap:8px; color:var(--muted); font-size:14px; }
   .meta-row span{ display:inline-flex; align-items:center; gap:6px; }
 
-.avatar {
-  width: 190px;
-  height: 190px;
-  border-radius: 50%;
-  /* MENGUBAH GRADASI MENJADI LEBIH LEMBUT DENGAN WARNA AKSEN */
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(124, 58, 237, 0.2)), #000; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 56px;
-  box-shadow: var(--shadow-hover);
-  flex-shrink: 0;
-  overflow: hidden; /* Pastikan foto tetap di dalam lingkaran */
-  border: 4px solid #fff; /* Tambahkan border putih tipis agar kontras */
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  /* MENAMBAHKAN EFEK GRADASI DI ATAS FOTO */
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.8));
-}
+  .avatar{
+    position:relative; overflow:hidden;
+    width:190px; height:190px; border-radius:50%;
+    background:linear-gradient(135deg, var(--text), var(--primary));
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-family:'Poppins',sans-serif; font-weight:700; font-size:56px;
+    box-shadow:var(--shadow-hover);
+    flex-shrink:0;
+  }
+  .avatar img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 
   /* generic section */
   section{ padding:56px 0; }
@@ -149,12 +132,32 @@
   .tl-card li:last-child{ margin-bottom:0; }
 
   /* projects */
-  .proj-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
-  .proj-card{ padding:26px; display:flex; flex-direction:column; height:100%; transition:box-shadow .15s ease, transform .15s ease; }
-  .proj-card:hover{ box-shadow:var(--shadow-hover); transform:translateY(-2px); }
-  .proj-card.featured{ grid-column:1 / -1; background:linear-gradient(135deg, var(--primary-soft), #fff 60%); }
-  .proj-badge{ display:inline-block; font-size:11.5px; font-weight:700; color:var(--primary-dark); background:var(--primary-soft); padding:4px 10px; border-radius:6px; margin-bottom:12px; width:fit-content; letter-spacing:0.02em; }
-  .proj-card.featured .proj-badge{ background:#fff; }
+  .proj-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+  .proj-card{ padding:0; overflow:hidden; display:flex; flex-direction:column; height:100%; transition:box-shadow .3s ease, transform .3s ease; }
+  .proj-card:hover{ box-shadow:var(--shadow-hover); transform:translateY(-8px); }
+  .proj-card.featured{ grid-column:1 / -1; }
+  .proj-card.featured .proj-media{ height:220px; }
+
+  .proj-media{ position:relative; height:170px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .proj-media .ic{ font-size:44px; transition:transform .4s ease; z-index:1; }
+  .proj-card:hover .proj-media .ic{ transform:scale(1.12); }
+  .proj-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:2; transition:transform .4s ease; }
+  .proj-card:hover .proj-media img{ transform:scale(1.08); }
+  .proj-overlay{ position:absolute; inset:0; background:linear-gradient(to top, rgba(15,12,30,0.72), transparent 65%);
+    display:flex; align-items:flex-end; padding:14px; opacity:0; transition:opacity .3s ease; }
+  .proj-card:hover .proj-overlay{ opacity:1; }
+  .proj-overlay .tag-row{ margin:0; }
+  .proj-overlay .tag{ background:rgba(255,255,255,0.92); color:var(--text); border:none; font-weight:600; }
+
+  .g1{ background:linear-gradient(135deg,#4F46E5,#7C3AED); }
+  .g2{ background:linear-gradient(135deg,#6D28D9,#4C1D95); }
+  .g3{ background:linear-gradient(135deg,#4338CA,#312E81); }
+  .g4{ background:linear-gradient(135deg,#7C3AED,#5B21B6); }
+  .g5{ background:linear-gradient(135deg,#4F46E5,#312E81); }
+  .g6{ background:linear-gradient(135deg,#6D28D9,#4338CA); }
+
+  .proj-body{ padding:22px 24px; display:flex; flex-direction:column; flex:1; }
+  .proj-badge{ display:inline-block; font-size:11.5px; font-weight:700; color:var(--primary-dark); background:var(--primary-soft); padding:4px 10px; border-radius:6px; margin-bottom:10px; width:fit-content; letter-spacing:0.02em; }
   .proj-card h3{ font-size:17.5px; margin-bottom:4px; }
   .proj-org{ color:var(--muted); font-size:13px; margin-bottom:12px; }
   .proj-desc{ color:var(--muted); font-size:14.5px; margin-bottom:16px; flex-grow:1; }
@@ -164,10 +167,15 @@
   .proj-link{ font-size:13.5px; font-weight:600; display:inline-flex; align-items:center; gap:5px; }
 
   /* certifications */
-  .cert-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
-  .cert-card{ padding:18px 20px; display:flex; align-items:center; gap:14px; }
-  .cert-ic{ width:38px; height:38px; border-radius:10px; background:var(--accent-soft); color:var(--primary-dark); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; flex-shrink:0; }
-  .cert-name{ font-weight:600; font-size:14.5px; margin-bottom:2px; }
+  .cert-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .cert-card{ padding:0; overflow:hidden; text-align:center; transition:box-shadow .3s ease, transform .3s ease; }
+  .cert-card:hover{ box-shadow:var(--shadow-hover); transform:translateY(-8px); }
+  .cert-media{ position:relative; height:120px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .cert-media .badge{ font-size:26px; font-weight:700; color:#fff; letter-spacing:0.02em; transition:transform .3s ease; }
+  .cert-card:hover .cert-media .badge{ transform:scale(1.12); }
+  .cert-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#fff; padding:10px; z-index:2; }
+  .cert-body{ padding:18px 16px; }
+  .cert-name{ font-weight:600; font-size:14.5px; margin-bottom:4px; }
   .cert-src{ color:var(--muted); font-size:12.5px; }
 
   /* leadership */
@@ -194,7 +202,7 @@
     .about-grid{ grid-template-columns:1fr; }
     .skill-grid{ grid-template-columns:1fr; }
     .proj-grid{ grid-template-columns:1fr; }
-    .cert-grid{ grid-template-columns:1fr; }
+    .cert-grid{ grid-template-columns:repeat(2,1fr); }
     .lead-grid{ grid-template-columns:1fr; }
     nav.links{ display:none; }
     h1.name{ font-size:32px; }
@@ -239,7 +247,8 @@
         </div>
       </div>
       <div class="avatar">
-        <img src="foto-rafa.jpg" alt="Nazly Rafa Oktafian Nuzqu">
+        <img src="assets/images/profile.jpg" alt="Nazly Rafa Oktafian Nuzqu" onerror="this.remove()">
+        <span>NR</span>
       </div>
     </div>
   </section>
@@ -258,7 +267,7 @@
         <li><span class="k">Education</span><span class="v">B.Sc. Information Systems</span></li>
         <li><span class="k">University</span><span class="v">Telkom University Purwokerto</span></li>
         <li><span class="k">GPA</span><span class="v">3.93 / 4.00</span></li>
-        <li><span class="k">Internships</span><span class="v">4 completed</span></li>
+        <li><span class="k">Internships</span><span class="v">3 completed</span></li>
         <li><span class="k">Focus</span><span class="v">Analytics · Engineering · ML</span></li>
       </ul>
     </div>
@@ -290,7 +299,7 @@
       <div class="card skill-card">
         <h4><span class="ic"></span>Database & Engineering</h4>
         <div class="pill-row">
-          <span class="pill">MySQL</span><span class="pill">ERD Design</span><span class="pill">Data Normalization</span><span class="pill">BigQuery</span><span class="pill">Airflow</span>
+          <span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">Data Modelling</span><span class="pill">ETL/ELT</span><span class="pill">ERD Design</span><span class="pill">Data Normalization</span><span class="pill">BigQuery</span><span class="pill">Airflow</span>
         </div>
       </div>
     </div>
@@ -303,13 +312,15 @@
     <div class="tl">
       <div class="tl-item">
         <div class="card tl-card">
-          <span class="tl-date">Dec 2025 — Present</span>
+          <span class="tl-date">Dec 2025 — May 2026</span>
           <p class="tl-role">Data Analyst Intern</p>
           <p class="tl-org">SOKO Financial</p>
           <ul>
             <li>End-to-end data analysis supporting financial and business performance monitoring</li>
             <li>Built interactive Looker Studio dashboards for KPI tracking and executive reporting</li>
             <li>Maintained a KPI mastersheet and designed pipeline workflows for data integration and reporting automation</li>
+            <li>Design data pipeline workflows for integration validation and reporting automation.</li>
+            <li>Generate periodic financial reports for strategic and operational decisions.</li>
           </ul>
         </div>
       </div>
@@ -333,6 +344,7 @@
           <ul>
             <li>Applied K-Means clustering to segment customers by purchasing behavior and payment method</li>
             <li>Developed a credit risk prediction model with feature selection and validation</li>
+            <li>Collaborated with industry mentors to deliver data-driven business recommendations.</li>
           </ul>
         </div>
       </div>
@@ -358,57 +370,103 @@
     <div class="proj-grid">
 
       <div class="card proj-card featured">
-        <span class="proj-badge">FEATURED · DATA ENGINEERING</span>
-        <h3>Retail E-commerce Data Warehouse</h3>
-        <p class="proj-org">Independent portfolio project · Olist dataset</p>
-        <p class="proj-desc">End-to-end pipeline built on a medallion architecture: raw retail transaction data ingested from PostgreSQL, staged in GCS, modeled in BigQuery with dbt, and orchestrated with Airflow into Looker Studio–ready marts.</p>
-        <div class="tag-row">
-          <span class="tag">PostgreSQL</span><span class="tag">GCS</span><span class="tag">BigQuery</span><span class="tag">dbt</span><span class="tag">Airflow</span><span class="tag">Looker Studio</span>
+        <div class="proj-media g1">
+          <img src="assets/images/projects/retail-warehouse.jpg" alt="Retail E-commerce Data Warehouse" onerror="this.remove()">
+          <span class="ic">🏗️</span>
+          <div class="proj-overlay">
+            <div class="tag-row"><span class="tag">PostgreSQL</span><span class="tag">GCS</span><span class="tag">BigQuery</span><span class="tag">dbt</span><span class="tag">Airflow</span><span class="tag">Looker Studio</span></div>
+          </div>
         </div>
-        <a class="proj-link" href="https://github.com/rfaoktvian/retail-ecommerce-data-warehouse" target="_blank" rel="noopener">View on GitHub →</a>
+        <div class="proj-body">
+          <span class="proj-badge">FEATURED · DATA ENGINEERING</span>
+          <h3>Retail E-commerce Data Warehouse</h3>
+          <p class="proj-org">Independent portfolio project · Olist dataset</p>
+          <p class="proj-desc">End-to-end pipeline built on a medallion architecture: raw retail transaction data ingested from PostgreSQL, staged in GCS, modeled in BigQuery with dbt, and orchestrated with Airflow into Looker Studio–ready marts.</p>
+          <a class="proj-link" href="https://github.com/rfaoktvian/retail-ecommerce-data-warehouse" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
       </div>
 
       <div class="card proj-card">
-        <span class="proj-badge">MACHINE LEARNING</span>
-        <h3>Credit Risk Prediction</h3>
-        <p class="proj-org">Independent portfolio project · LendingClub dataset</p>
-        <p class="proj-desc">Logistic regression credit risk model with data leakage removed and class-weight balancing, tracked with MLflow.</p>
-        <div class="tag-row"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">MLflow</span></div>
-        <p class="proj-metric">ROC-AUC ≈ 0.68</p>
-        <a class="proj-link" href="https://github.com/rfaoktvian/CreditRiskPrediction" target="_blank" rel="noopener">View on GitHub →</a>
+        <div class="proj-media g2">
+          <img src="assets/images/projects/credit-risk.jpg" alt="Credit Risk Prediction" onerror="this.remove()">
+          <span class="ic">🧮</span>
+          <div class="proj-overlay">
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">MLflow</span></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-badge">MACHINE LEARNING</span>
+          <h3>Credit Risk Prediction</h3>
+          <p class="proj-org">Independent portfolio project · LendingClub dataset</p>
+          <p class="proj-desc">Logistic regression credit risk model with data leakage removed and class-weight balancing, tracked with MLflow.</p>
+          <p class="proj-metric">ROC-AUC ≈ 0.68</p>
+          <a class="proj-link" href="https://github.com/rfaoktvian/CreditRiskPrediction" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
       </div>
 
       <div class="card proj-card">
-        <span class="proj-badge">NLP</span>
-        <h3>Public Opinion Sentiment Analysis</h3>
-        <p class="proj-org">AI Engineer Cohort · 2024 Presidential Debate</p>
-        <p class="proj-desc">Bidirectional LSTM model analyzing public sentiment from social media, with preprocessing tuned for Indonesian-language text.</p>
-        <div class="tag-row"><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Bi-LSTM</span></div>
-        <p class="proj-metric">87% accuracy</p>
+        <div class="proj-media g3">
+          <img src="assets/images/projects/sentiment-analysis.jpg" alt="Public Opinion Sentiment Analysis" onerror="this.remove()">
+          <span class="ic">🗣️</span>
+          <div class="proj-overlay">
+            <div class="tag-row"><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Bi-LSTM</span></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-badge">NLP</span>
+          <h3>Public Opinion Sentiment Analysis</h3>
+          <p class="proj-org">AI Engineer Cohort · 2024 Presidential Debate</p>
+          <p class="proj-desc">Bidirectional LSTM model analyzing public sentiment from social media, with preprocessing tuned for Indonesian-language text.</p>
+          <p class="proj-metric">87% accuracy</p>
+        </div>
       </div>
 
       <div class="card proj-card">
-        <span class="proj-badge">DASHBOARD</span>
-        <h3>Customer Behaviour Overview Dashboard</h3>
-        <p class="proj-org">PT Telkom Indonesia</p>
-        <p class="proj-desc">Analytics dashboard tracking network product usage across segments, built on complex BigQuery SQL for behavioral aggregation.</p>
-        <div class="tag-row"><span class="tag">BigQuery</span><span class="tag">Looker Studio</span><span class="tag">SQL</span></div>
+        <div class="proj-media g4">
+          <img src="assets/images/projects/telkom-dashboard.jpg" alt="Customer Behaviour Overview Dashboard" onerror="this.remove()">
+          <span class="ic">📊</span>
+          <div class="proj-overlay">
+            <div class="tag-row"><span class="tag">BigQuery</span><span class="tag">Looker Studio</span><span class="tag">SQL</span></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-badge">DASHBOARD</span>
+          <h3>Customer Behaviour Overview Dashboard</h3>
+          <p class="proj-org">PT Telkom Indonesia</p>
+          <p class="proj-desc">Analytics dashboard tracking network product usage across segments, built on complex BigQuery SQL for behavioral aggregation.</p>
+        </div>
       </div>
 
       <div class="card proj-card">
-        <span class="proj-badge">SEGMENTATION</span>
-        <h3>SIPASAR — Customer Segmentation</h3>
-        <p class="proj-org">Dicoding × Pijak × IBM SkillsBuild capstone</p>
-        <p class="proj-desc">AI-powered segmentation dashboard using K-Means and RFM analysis on retail transaction data, deployed via Streamlit.</p>
-        <div class="tag-row"><span class="tag">Python</span><span class="tag">K-Means</span><span class="tag">RFM</span><span class="tag">Streamlit</span></div>
+        <div class="proj-media g5">
+          <img src="assets/images/projects/sipasar.jpg" alt="SIPASAR Customer Segmentation" onerror="this.remove()">
+          <span class="ic">🧩</span>
+          <div class="proj-overlay">
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">K-Means</span><span class="tag">RFM</span><span class="tag">Streamlit</span></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-badge">SEGMENTATION</span>
+          <h3>SIPASAR — Customer Segmentation</h3>
+          <p class="proj-org">Dicoding × Pijak × IBM SkillsBuild capstone</p>
+          <p class="proj-desc">AI-powered segmentation dashboard using K-Means and RFM analysis on retail transaction data, deployed via Streamlit.</p>
+        </div>
       </div>
 
       <div class="card proj-card">
-        <span class="proj-badge">APPLIED ML</span>
-        <h3>RitaScreen — AI CV Screening</h3>
-        <p class="proj-org">Independent project</p>
-        <p class="proj-desc">CV screening system combining SBERT embeddings with an XGBoost scoring model, served through a FastAPI backend.</p>
-        <div class="tag-row"><span class="tag">SBERT</span><span class="tag">XGBoost</span><span class="tag">FastAPI</span></div>
+        <div class="proj-media g6">
+          <img src="assets/images/projects/ritascreen.jpg" alt="RitaScreen AI CV Screening" onerror="this.remove()">
+          <span class="ic">🤖</span>
+          <div class="proj-overlay">
+            <div class="tag-row"><span class="tag">SBERT</span><span class="tag">XGBoost</span><span class="tag">FastAPI</span></div>
+          </div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-badge">APPLIED ML</span>
+          <h3>RitaScreen — AI CV Screening</h3>
+          <p class="proj-org">Independent project</p>
+          <p class="proj-desc">CV screening system combining SBERT embeddings with an XGBoost scoring model, served through a FastAPI backend.</p>
+        </div>
       </div>
 
     </div>
@@ -420,28 +478,28 @@
     <h2 class="sec-title">Certifications</h2>
     <div class="cert-grid">
       <div class="card cert-card">
-        <div class="cert-ic">AI</div>
-        <div><p class="cert-name">AI Engineer Cohort</p><p class="cert-src">Dicoding × Pijak 2026 & IBM SkillsBuild</p></div>
+        <div class="cert-media g1"><img src="assets/images/certificates/ai-engineer-cohort.png" alt="AI Engineer Cohort" onerror="this.remove()"><span class="badge">AI</span></div>
+        <div class="cert-body"><p class="cert-name">AI Engineer Cohort</p><p class="cert-src">Dicoding × Pijak 2026 & IBM SkillsBuild</p></div>
       </div>
       <div class="card cert-card">
-        <div class="cert-ic">DS</div>
-        <div><p class="cert-name">Data Scientist Project Based Internship</p><p class="cert-src">ID/X Partners</p></div>
+        <div class="cert-media g2"><img src="assets/images/certificates/data-scientist-idx.png" alt="Data Scientist Project Based Internship" onerror="this.remove()"><span class="badge">DS</span></div>
+        <div class="cert-body"><p class="cert-name">Data Scientist Project Based Internship</p><p class="cert-src">ID/X Partners</p></div>
       </div>
       <div class="card cert-card">
-        <div class="cert-ic">DA</div>
-        <div><p class="cert-name">Data Analyst Bootcamp — Basics to Advanced</p><p class="cert-src">Udemy</p></div>
+        <div class="cert-media g3"><img src="assets/images/certificates/data-analyst-bootcamp.png" alt="Data Analyst Bootcamp" onerror="this.remove()"><span class="badge">DA</span></div>
+        <div class="cert-body"><p class="cert-name">Data Analyst Bootcamp — Basics to Advanced</p><p class="cert-src">Udemy</p></div>
       </div>
       <div class="card cert-card">
-        <div class="cert-ic">AL</div>
-        <div><p class="cert-name">Fundamental Algorithms</p><p class="cert-src">Coding Studio</p></div>
+        <div class="cert-media g4"><img src="assets/images/certificates/fundamental-algorithms.png" alt="Fundamental Algorithms" onerror="this.remove()"><span class="badge">AL</span></div>
+        <div class="cert-body"><p class="cert-name">Fundamental Algorithms</p><p class="cert-src">Coding Studio</p></div>
       </div>
       <div class="card cert-card">
-        <div class="cert-ic">DB</div>
-        <div><p class="cert-name">Fundamental Database MySQL</p><p class="cert-src">Coding Studio</p></div>
+        <div class="cert-media g5"><img src="assets/images/certificates/fundamental-database.png" alt="Fundamental Database MySQL" onerror="this.remove()"><span class="badge">DB</span></div>
+        <div class="cert-body"><p class="cert-name">Fundamental Database MySQL</p><p class="cert-src">Coding Studio</p></div>
       </div>
       <div class="card cert-card">
-        <div class="cert-ic">CN</div>
-        <div><p class="cert-name">Computer & Network Engineering</p><p class="cert-src">BNSP</p></div>
+        <div class="cert-media g6"><img src="assets/images/certificates/computer-network.png" alt="Computer & Network Engineering" onerror="this.remove()"><span class="badge">CN</span></div>
+        <div class="cert-body"><p class="cert-name">Computer & Network Engineering</p><p class="cert-src">BNSP</p></div>
       </div>
     </div>
   </section>
